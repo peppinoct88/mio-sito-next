@@ -1,4 +1,157 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --accent: #6C63FF;
+    --accent-light: #8B83FF;
+    --neon: #00F0FF;
+    --bg-primary: #0f0f0f;
+    --bg-surface: #1a1a2e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--bg-primary);
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #ffffff;
+    background: var(--bg-primary);
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-light);
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, #6C63FF 0%, #00F0FF 50%, #6C63FF 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient 8s ease infinite;
+}
+
+/* Glass Morphism */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-hover:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(108, 99, 255, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(108, 99, 255, 0.15);
+}
+
+/* Glow Effects */
+.glow-accent {
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.3), 0 0 60px rgba(108, 99, 255, 0.1);
+}
+
+.glow-neon {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3), 0 0 60px rgba(0, 240, 255, 0.1);
+}
+
+/* Animated Background Grid */
+.bg-grid {
+    background-image:
+          linear-gradient(rgba(108, 99, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(108, 99, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+/* Noise Texture Overlay */
+.noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Section Transitions */
+.section-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Magnetic Button */
+.magnetic-btn {
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.magnetic-btn::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--accent), var(--neon));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.magnetic-btn:hover::before {
+    opacity: 1;
+}
+
+/* Canvas container */
+.canvas-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+/* Cursor follower */
+.cursor-follower {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease-out, width 0.3s ease, height 0.3s ease;
+    mix-blend-mode: difference;
+}
+
+.cursor-follower.expanded {
+    width: 60px;
+    height: 60px;
+    border-color: var(--neon);
+}
