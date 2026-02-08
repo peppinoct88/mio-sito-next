@@ -1,41 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Pacifico } from "next/font/google";
 import "./globals.css";
 
-const pacifico = Pacifico({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-pacifico',
-})
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "CIVIKA - L'architettura della reputazione istituzionale",
-  description: "Infrastruttura strategica per la credibilità delle istituzioni. Governance, controllo assoluto, eccellenza.",
+    title: "Studio Digitale | Creiamo Esperienze Web Straordinarie",
+    description: "Agenzia digitale specializzata nella creazione di siti web, e-commerce, web app e strategie digitali per aziende che vogliono distinguersi.",
+    keywords: "web agency, siti web, e-commerce, web app, design, sviluppo, Next.js, React",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" suppressHydrationWarning={true}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
-}
+    return (
+          <html lang="it" className="dark">
+                <body className="bg-primary text-white antialiased">
+                  {children}
+                </body>body>
+          </html>html>
+        );
+}</html>
